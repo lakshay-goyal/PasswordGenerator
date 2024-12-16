@@ -19,19 +19,20 @@ let password = "";
 let passwordLength = 10;
 let checkCount = 0;
 handleSlider();
-//ste strength circle color to grey
 setIndicator("#ccc");
 
 
-//set passwordLength
 function handleSlider() {
     inputSlider.value = passwordLength;
     lengthDisplay.innerText = passwordLength;
-    //or kuch bhi karna chahiye ? - HW
+
     const min = inputSlider.min;
     const max = inputSlider.max;
-    inputSlider.style.backgroundSize = ( (passwordLength - min)*100/(max - min)) + "% 100%"
+    const valuePercentage = ( (passwordLength - min) * 100 / (max - min));
+    
+    inputSlider.style.setProperty('--slider-value', valuePercentage);
 }
+
 
 function setIndicator(color) {
     indicator.style.backgroundColor = color;
@@ -155,28 +156,8 @@ generateBtn.addEventListener('click', () => {
         handleSlider();
     }
 
-    // let's start the jouney to find new password
     console.log("Starting the Journey");
-    //remove old password
     password = "";
-
-    //let's put the stuff mentioned by checkboxes
-
-    // if(uppercaseCheck.checked) {
-    //     password += generateUpperCase();
-    // }
-
-    // if(lowercaseCheck.checked) {
-    //     password += generateLowerCase();
-    // }
-
-    // if(numbersCheck.checked) {
-    //     password += generateRandomNumber();
-    // }
-
-    // if(symbolsCheck.checked) {
-    //     password += generateSymbol();
-    // }
 
     let funcArr = [];
 
